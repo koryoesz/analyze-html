@@ -27,11 +27,15 @@
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+  flex-wrap: wrap;  /* Ensure form elements wrap on small screens */
 }
 
 .file-input {
   margin-right: 10px;
   padding: 10px;
+  width: 100%;  /* Make input full-width on smaller screens */
+  max-width: 300px; /* Limit max width */
+  margin-bottom: 10px;
 }
 
 .submit-btn {
@@ -42,6 +46,8 @@
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s;
+  width: 100%; /* Make button full-width on smaller screens */
+  max-width: 300px;
 }
 
 .submit-btn:disabled {
@@ -71,11 +77,10 @@
 .score-details {
   display: flex;
   justify-content: flex-start;
-  gap: 20px;  /* Space between the cards */
+  gap: 20px;
   margin-bottom: 30px;
-  flex-wrap: wrap;  /* Allow items to wrap on smaller screens */
+  flex-wrap: wrap;
 }
-
 
 .card {
   background-color: #f4f4f9;
@@ -83,7 +88,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  flex: 1 1 150px; /* Flex to ensure cards are sized well, 150px minimum width */
+  flex: 1 1 150px;
   margin: 0 10px;
   text-align: center;
   min-width: 200px;
@@ -116,17 +121,18 @@
   font-weight: bold;
   color: #4CAF50;
 }
+
 /* Issues container */
 .issues {
   width: 100%;
-  overflow-x: auto; /* Allow horizontal scrolling if needed */
+  overflow-x: auto;
   margin-top: 40px;
 }
 
 /* Issues table */
 .issues-table {
   width: 100%;
-  table-layout: auto; /* Allow columns to adjust their width based on content */
+  table-layout: auto;
   border-collapse: collapse;
   margin-top: 10px;
 }
@@ -135,7 +141,7 @@
   padding: 12px;
   text-align: left;
   border: 1px solid #ddd;
-  word-wrap: break-word; /* Allow text to wrap within cells */
+  word-wrap: break-word;
 }
 
 .issues-table th {
@@ -150,33 +156,54 @@
   background-color: #f1f1f1;
 }
 
-/* Logo */
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .header {
+    font-size: 1.5rem; /* Smaller header for mobile */
   }
-  to {
-    transform: rotate(360deg);
+
+  .form {
+    flex-direction: column; /* Stack input and button */
+    align-items: center;
+  }
+
+  .file-input,
+  .submit-btn {
+    width: 90%; /* Ensure full-width on small screens */
+    margin: 10px 0;
+  }
+
+  .score-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    flex: 1 1 100%; /* Cards take full width on small screens */
+    margin: 10px 0; /* Adjust card margin */
+  }
+
+  .issues-table th, .issues-table td {
+    padding: 8px; /* Reduce padding for small screens */
+  }
+
+  .issues-table {
+    overflow-x: auto;
+    display: block; /* Allow horizontal scrolling if needed */
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Extra small devices (phones in portrait mode) */
+@media (max-width: 480px) {
+  .header {
+    font-size: 1.2rem; /* Even smaller header for very small screens */
+  }
+
+  .card {
+    min-width: 100%; /* Ensure cards use full width on smaller phones */
+  }
+
+  .issues-table th, .issues-table td {
+    font-size: 0.9rem; /* Smaller text for small screens */
   }
 }
